@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: testpod
+  namespace: testpod
+  labels:
+    type: testpod
+data:
+  value: testpodcfg

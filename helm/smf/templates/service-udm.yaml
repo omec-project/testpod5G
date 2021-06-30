@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: udm
+  labels:
+    type: testpod
+  namespace: testpod
+spec:
+  type: ClusterIP
+  ports:
+  - name: udm
+    targetPort: 29503
+    port: 29503
+  selector:
+    type: testpod

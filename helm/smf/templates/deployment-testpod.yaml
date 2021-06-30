@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: testpod
+  namespace: testpod
+  labels:
+    type: testpod
+spec:
+  template:
+    metadata:
+      name: testpod
+      labels:
+        type: testpod
+      namespace: testpod
+    spec:
+      containers:
+      - name: testpod
+        image: docker.io/bhelankur/testpod:0.0.2
+        command: ["./testpod", "amf"]
+  replicas: 1
+  selector:
+    matchLabels:
+      type: testpod

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pcf
+  labels:
+    type: testpod
+  namespace: testpod
+spec:
+  type: ClusterIP
+  ports:
+  - name: pcf
+    targetPort: 29507
+    port: 29507
+  selector:
+    type: testpod

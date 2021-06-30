@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dummysmf
+  namespace: testpod
+  labels:
+    type: smf
+spec:
+  containers:
+  - image: docker.io/bhelankur/dummysmf:latest
+    imagePullPolicy: Always
+    name: dummysmf
+    command: ["./dummysmf"]

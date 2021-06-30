@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smf
+  namespace: testpod
+  labels:
+    type: smf
+spec:
+  template:
+    metadata:
+      name: smf
+      labels:
+        type: smf
+      namespace: testpod
+    spec:
+      containers:
+      - name: smf
+        image: docker.io/bhelankur/5gc-smf:0.0.4-dev
+        command: ["./smf", "-smfcfg", "testconfig/smfcfg.yaml", "-uerouting", "testconfig/uerouting.yaml"]    
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+  replicas: 1
+  selector:
+    matchLabels:
+      type: smf
