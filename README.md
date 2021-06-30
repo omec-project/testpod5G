@@ -5,16 +5,22 @@ The Testpod can be run locally on any environment having miniKube via helm test 
 
 
 On minikube
-Example- to test SMF(precondition- UPF should be running)
+
+Example- to test SMF(precondition- UPF should be running) =>
 helm install smftest ./helm/smf/
 
 
+
 In Binary mode
-SMF
+SMF =>
 ./smf -smfcfg ../../config/smfcfg.yaml -uerouting ../../config/uerouting.yaml
 
-UPF
+
+
+UPF =>
 ./pfcpiface -config ../conf/upf.json
 
-TestPod App
+
+
+TestPod App =>
 ./testpod amf
