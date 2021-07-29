@@ -1,59 +1,30 @@
 package cxtcreate
 
+//Context Replacements of 5 calls
 import (
-	"bytes"
-	"encoding/json"
-	"fmt"
-	"log"
-	"net/http"
-	"net/http/httputil"
-	"testpod/network"
+	"strconv"
+	"time"
 )
 
 type Case2 struct {
 }
 
-type clientData1 struct {
-	ReqType string `json:"reqtype"`
-	ReqMsg  string `json:"reqmsg"`
-}
-
-func (c Case2) makeHeader(req *http.Request) {
-	req.Header.Set("Accept", "application/json")
-}
-
-func (c Case2) makeBody() *bytes.Reader {
-	dataBody := clientData1{
-		ReqType: "ReqType_2",
-		ReqMsg:  "ReqData_2"}
-
-	byteData, err := json.Marshal(dataBody)
-	if err != nil {
-		fmt.Println("Marshal Error: ", err.Error())
-	}
-
-	fmt.Println("Json body:", string(byteData))
-	return bytes.NewReader(byteData)
-}
-
 func (c Case2) Execute() bool {
-	r := c.makeBody()
-	req, err := http.NewRequest("GET", "http://dummysmfsvc:6000/nsmf-pdusession/v1/", r)
-	if err != nil {
-		log.Fatalln(err)
+	var status bool
+	for count := 1; count <= 5; count++ {
+		if status = SendPduSessCreateRequest("imsi-20893000000001"+strconv.Itoa(count), 5); !status {
+			return status
+		}
+
+		time.Sleep(2 * time.Second)
 	}
 
-	c.makeHeader(req)
+	for count := 1; count <= 5; count++ {
+		if status = SendPduSessCreateRequest("imsi-20893000000001"+strconv.Itoa(count), 5); !status {
+			return status
+		}
 
-	resp := network.Send(req)
-	defer resp.Body.Close()
-
-	bytes, err := httputil.DumpResponse(resp, true)
-	if err != nil {
-		fmt.Println(err)
-		return false
+		time.Sleep(2 * time.Second)
 	}
-
-	fmt.Println(string(bytes))
 	return true
 }

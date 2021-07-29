@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"log"
 	"os"
 	"testpod/testnodes/amf"
 	"testpod/testnodes/nrf"
@@ -30,12 +30,12 @@ func init() {
 func main() {
 
 	if os.Args[1] == "smf" {
-		fmt.Println("Trigger SMF")
+		log.Println("Trigger SMF")
 		//host SMF test pod Service
 		smf.HostServices(":29502")
 
 	} else if os.Args[1] == "amf" {
-		fmt.Println("Trigger AMF")
+		log.Println("Trigger AMF")
 
 		//Start test-suite(make it blocking)
 		go amf.StartTestSuite()

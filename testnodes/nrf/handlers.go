@@ -2,7 +2,7 @@ package nrf
 
 import (
 	"encoding/json"
-	"fmt"
+	"log"
 	"net/http"
 	"strings"
 
@@ -11,6 +11,14 @@ import (
 	"github.com/free5gc/openapi/models"
 	"github.com/gin-gonic/gin"
 )
+
+var (
+	ChanSmfRegistered chan bool
+)
+
+func init() {
+	ChanSmfRegistered = make(chan bool, 1)
+}
 
 type nrfPlmnList struct {
 	PlmnList []models.PlmnId `json:"plmnList,omitempty" yaml:"plmnList" bson:"plmnList" mapstructure:"PlmnList"`
@@ -34,7 +42,7 @@ func HTTPRegisterNFInstance(c *gin.Context) {
 	var plmnList nrfPlmnList
 	err := json.Unmarshal([]byte(plmnJson), &plmnList)
 	if err != nil {
-		fmt.Println("PLMN JSON Decode Error: ", err.Error())
+		log.Println("PLMN JSON Decode Error: ", err.Error())
 	}
 	nfprofile.PlmnList = &plmnList.PlmnList
 
@@ -49,6 +57,9 @@ func HTTPRegisterNFInstance(c *gin.Context) {
 
 	responseBody, _ := openapi.Serialize(httpResponse.Body, "application/json")
 	c.Data(httpResponse.Status, "application/json", responseBody)
+
+	//Send Trigger for AMF test suite start
+	ChanSmfRegistered <- true
 }
 
 func HTTPDeregisterNFInstance(c *gin.Context) {

@@ -1,22 +1,41 @@
 package cxtcreate
 
+import "log"
+
 var (
 	c1 Case1
-	//c2 cxtcreate.Case2
+	c2 Case2
+	c3 Case3
 	//u2 cxtupdate.Case1
 )
 
 var SubsImsiToUuidTable map[string]string
 
+var testcaseTable []bool
+
 func init() {
 	SubsImsiToUuidTable = make(map[string]string)
+	testcaseTable = []bool{false, true, false, false}
 }
 
 func Execute() bool {
 
 	var status bool
-	if status = c1.Execute(); !status {
-		return status
+
+	if testcaseTable[1] {
+		log.Println("starting create testcase 1")
+		status = c1.Execute()
 	}
-	return true
+
+	if testcaseTable[2] {
+		log.Println("starting create testcase 2")
+		status = c2.Execute()
+	}
+
+	if testcaseTable[3] {
+		log.Println("starting create testcase 3")
+		status = c3.Execute()
+	}
+
+	return status
 }
