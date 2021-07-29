@@ -1,6 +1,6 @@
 # testpod5G
 
-This is a developed tool to simulate 5G NFs like AMF, SMF, NRF, PCF, UDM. The real NF to test, can be like SMF while all other NFs shall be simulated using testpod.
+This is a developer tool to simulate 5G NFs like AMF, SMF, NRF, PCF, UDM. The real NF to test, can be like SMF while all other NFs shall be simulated using testpod.
 The Testpod can be run locally on any environment having miniKube via helm test package file present in repository OR locally as in binary mode.
 
 
