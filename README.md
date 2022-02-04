@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2021 Open Networking Foundation <info@opennetworking.org>
+# SPDX-License-Identifier: Apache-2.0
+
 # testpod5G
 
 This is a developer tool to simulate 5G NFs like AMF, SMF, NRF, PCF, UDM. The real NF to test, can be like SMF while all other NFs shall be simulated using testpod.

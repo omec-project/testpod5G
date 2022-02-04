@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2021 Open Networking Foundation <info@opennetworking.org>
+# SPDX-License-Identifier: Apache-2.0
+
 FROM golang:alpine AS builder
 
 LABEL maintainer="ankur@opennetworking.org"
