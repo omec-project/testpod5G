@@ -1,29 +1,24 @@
-# SPDX-FileCopyrightText: 2021 Open Networking Foundation <info@opennetworking.org>
-# SPDX-License-Identifier: Apache-2.0
+<!--
+Copyright 2021-present Open Networking Foundation
+SPDX-License-Identifier: Apache-2.0
+
+-->
 
 # testpod5G
 
-This is a developer tool to simulate 5G NFs like AMF, SMF, NRF, PCF, UDM. The real NF to test, can be like SMF while all other NFs shall be simulated using testpod.
-The Testpod can be run locally on any environment having miniKube via helm test package file present in repository OR locally as in binary mode.
+Testpod is a developer tool to fast track unit testing of any NF by simulating other NFs like AMF, PCF, UDM, NRF and UPF(only PFCP functionality) for SMF unit testing.
+
+## Supported Features
+1. Testpod supports  SMF unit testing. 
+2. The User can run an actual SMF application and testpod application to simulate other NFs which SMF interacts with. 
+3. The User can control behaviour of other NFs which reside in Testpod to verify SMF handling, like negative responses, timeouts, invalid response, etc from peer network functions. 
+
+## Planned Features
+
+1. PCC Rule support from PCF(Testpod) to SMF
+2. SMPolicy Notify Callback from PCF to SMF.
+3. Run a set of predefined test cases against SM
+4. Extend Functionality to test other NF functions 
 
 
-On minikube
-
-Example- to test SMF(precondition- UPF should be running) =>
-helm install smftest ./helm/smf/
-
-
-
-In Binary mode
-SMF =>
-./smf -smfcfg ../../config/smfcfg.yaml -uerouting ../../config/uerouting.yaml
-
-
-
-UPF =>
-./pfcpiface -config ../conf/upf.json
-
-
-
-TestPod App =>
-./testpod amf
+More details of the testPod can be found at - https://docs.sd-core.opennetworking.org/master/developer/testpod.html 
