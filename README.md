@@ -13,6 +13,9 @@ Testpod is a developer tool to fast track unit testing of any NF by simulating o
 2. The User can run an actual SMF application and testpod application to simulate other NFs which SMF interacts with. 
 3. The User can control behaviour of other NFs which reside in Testpod to verify SMF handling, like negative responses, timeouts, invalid response, etc from peer network functions. 
 
+## TestPod Setup
+![TestPod](/docs/images/TestPod.png)
+
 ## Planned Features
 
 1. PCC Rule support from PCF(Testpod) to SMF
