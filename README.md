@@ -24,4 +24,4 @@ Testpod is a developer tool to fast track unit testing of any NF by simulating o
 4. Extend Functionality to test other NF functions 
 
 
-More details of the testPod can be found at - https://docs.sd-core.opennetworking.org/master/developer/testpod.html 
+More details of the testPod can be found in [SD-Core docs](https://docs.sd-core.opennetworking.org/master/developer/testpod.html)
