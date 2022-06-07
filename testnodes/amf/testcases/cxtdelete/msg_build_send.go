@@ -14,8 +14,8 @@ import (
 	"testpod/network"
 	"testpod/testnodes/amf/testcases/cxtcreate"
 
-	openapi "github.com/free5gc/openapi"
-	"github.com/free5gc/openapi/models"
+	openapi "github.com/omec-project/openapi"
+	"github.com/omec-project/openapi/models"
 )
 
 func buildSessUpCnxDeactivateData() *models.UpdateSmContextRequest {

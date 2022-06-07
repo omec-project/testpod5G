@@ -13,8 +13,8 @@ import (
 	"strings"
 	"testpod/network"
 
-	openapi "github.com/free5gc/openapi"
-	"github.com/free5gc/openapi/models"
+	openapi "github.com/omec-project/openapi"
+	"github.com/omec-project/openapi/models"
 )
 
 func buildSessCreateData(supi string, pduSessionId int32) *models.PostSmContextsRequest {
